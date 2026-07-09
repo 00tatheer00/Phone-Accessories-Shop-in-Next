@@ -480,9 +480,6 @@
   position: relative;
   border-radius: 28px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
@@ -494,10 +491,12 @@
 }
 
 .galleryImg {
-  object-fit: contain;
-  width: 65% !important;
-  height: 65% !important;
-  position: relative !important;
+  object-fit: cover;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0;
+  left: 0;
   transition: transform 0.45s ease;
 }
 
