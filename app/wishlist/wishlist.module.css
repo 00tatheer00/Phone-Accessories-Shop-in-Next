@@ -16,18 +16,20 @@
 .wishlistGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 32px;
 }
 
 @media (max-width: 1024px) {
   .wishlistGrid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
 }
 
 @media (max-width: 768px) {
   .wishlistGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
 
@@ -54,18 +56,26 @@
 
 .removeBtn {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  background: none;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
   border: none;
-  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
   color: var(--text-muted);
   cursor: pointer;
   z-index: 10;
-  transition: var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
 }
 
 .removeBtn:hover {
+  background-color: #ffffff;
   color: var(--accent-red);
   transform: scale(1.1);
 }

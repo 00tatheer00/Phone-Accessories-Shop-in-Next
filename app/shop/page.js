@@ -350,15 +350,7 @@ function ShopContent() {
                   </div>
                 </div>
 
-                {/* Color dots bar */}
-                <div className={styles.colorSelectionBar}>
-                  <span className={styles.colorPillLabel}>Colors</span>
-                  <div className={styles.colorSelectionDots}>
-                    {getCategoryColorDots(product.category).map((color, idx) => (
-                      <span key={idx} className={styles.selectionDot} style={{ backgroundColor: color }} />
-                    ))}
-                  </div>
-                </div>
+
               </div>
             ))}
           </div>

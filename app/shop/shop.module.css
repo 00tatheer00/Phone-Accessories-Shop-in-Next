@@ -216,12 +216,13 @@
 .productsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 32px;
 }
 
 @media (max-width: 1200px) {
   .productsGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 }
 
@@ -248,19 +249,31 @@
 
 .wishlistBtn {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  background: none;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
   border: none;
-  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
   cursor: pointer;
   z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   color: var(--text-muted);
-  transition: var(--transition-fast);
+  transition: all 0.2s ease;
+}
+
+.wishlistBtn:hover {
+  transform: scale(1.1);
+  background-color: #ffffff;
 }
 
 .wishlistBtnActive {
-  color: var(--accent-red);
+  color: #f04f64 !important;
 }
 
 .productImgContainer {

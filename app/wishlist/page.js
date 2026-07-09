@@ -101,15 +101,7 @@ export default function Wishlist() {
               ${item.price.toFixed(2)}
             </div>
 
-            {/* Color selection dots */}
-            <div className={styles.colorSelectionBar}>
-              <span className={styles.colorPillLabel}>Colors</span>
-              <div className={styles.colorSelectionDots}>
-                {getCategoryColorDots(item.category).map((color, idx) => (
-                  <span key={idx} className={styles.selectionDot} style={{ backgroundColor: color }} />
-                ))}
-              </div>
-            </div>
+
 
           </div>
         ))}

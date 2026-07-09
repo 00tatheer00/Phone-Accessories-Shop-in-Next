@@ -419,15 +419,7 @@ export default function Storefront() {
                 <span className={styles.oldPrice}>{deal.oldPrice}</span>
               </div>
 
-              {/* Color dots bar */}
-              <div className={styles.colorSelectionBar} style={{ marginBottom: "16px" }}>
-                <span className={styles.colorPillLabel}>Colors</span>
-                <div className={styles.colorSelectionDots}>
-                  {getCategoryColorDots(deal.category).map((color, idx) => (
-                    <span key={idx} className={styles.selectionDot} style={{ backgroundColor: color }} />
-                  ))}
-                </div>
-              </div>
+
 
               {/* Progress Bar */}
               <div className={styles.stockWrapper}>
@@ -590,14 +582,7 @@ export default function Storefront() {
                 <span className={styles.newPrice}>${product.price.toFixed(2)}</span>
                 <span className={styles.oldPrice}>{product.oldPrice}</span>
               </div>
-              <div className={styles.colorSelectionBar}>
-                <span className={styles.colorPillLabel}>Colors</span>
-                <div className={styles.colorSelectionDots}>
-                  {getCategoryColorDots(product.category).map((color, idx) => (
-                    <span key={idx} className={styles.selectionDot} style={{ backgroundColor: color }} />
-                  ))}
-                </div>
-              </div>
+
             </div>
           ))}
 
