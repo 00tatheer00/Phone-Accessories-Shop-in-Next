@@ -171,10 +171,6 @@ export default function Storefront() {
           <div className={`${styles.heroGlowCircle} ${styles.heroGlow2}`} />
         </div>
         
-        {/* Navigation Arrows */}
-        <button className={`${styles.heroArrow} ${styles.heroArrowLeft}`} aria-label="Previous slide">‹</button>
-        <button className={`${styles.heroArrow} ${styles.heroArrowRight}`} aria-label="Next slide">›</button>
-
         <div className={styles.heroContent}>
           <div className={styles.heroLeft}>
             <span className={styles.heroSub}>DualSense Wireless Controller</span>
@@ -196,26 +192,6 @@ export default function Storefront() {
               Shop Now • Add to Cart
             </button>
           </div>
-          
-          <div className={styles.heroRight}>
-            <div className={styles.heroCircleBackdrop} />
-            <div className={styles.heroImageContainer}>
-              <Image 
-                src="/images/ps5-controller.png"
-                alt="PS5 DualSense Wireless Controller"
-                fill
-                priority
-                className={styles.heroImage}
-                sizes="(max-width: 868px) 100vw, 440px"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.heroNav}>
-          <button className={`${styles.heroDot} ${styles.heroDotActive}`} aria-label="Slide 1"></button>
-          <button className={styles.heroDot} aria-label="Slide 2"></button>
-          <button className={styles.heroDot} aria-label="Slide 3"></button>
         </div>
       </section>
 
