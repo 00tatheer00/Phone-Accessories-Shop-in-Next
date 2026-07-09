@@ -1,0 +1,138 @@
+/* Footer layout */
+.footer {
+  background-color: var(--bg-footer);
+  border-top: 1px solid var(--border-color);
+  padding: 60px 5% 30px;
+}
+
+.footerInner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 968px) {
+  .footerGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footerCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+  cursor: pointer;
+}
+
+.logoIcon {
+  font-size: 1.8rem;
+}
+
+.logoText {
+  color: var(--text-primary);
+}
+
+.logoHighlight {
+  color: var(--primary-blue);
+}
+
+.footerBrandDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.footerContact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.footerContactBold {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+}
+
+.footerColTitle {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footerLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footerLink {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  transition: var(--transition-fast);
+}
+
+.footerLink:hover {
+  color: var(--primary-blue);
+  transform: translateX(4px);
+}
+
+.footerBottom {
+  border-top: 1px solid var(--border-color);
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.footerLegalLinks {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footerLegalLink {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+}
+
+.footerLegalLink:hover {
+  color: var(--text-secondary);
+}

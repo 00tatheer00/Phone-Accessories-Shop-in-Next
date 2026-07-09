@@ -1,40 +1,66 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Fonts */
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-outfit), sans-serif;
+
+  /* E-Commerce Light Theme Color Palette */
+  --bg-pure: #ffffff;
+  --bg-light: #f0f2f5;
+  --bg-card: #ffffff;
+  --bg-footer: #f7f8fa;
+  
+  --primary-blue: #233a95; /* Royal blue of digitaz */
+  --primary-blue-hover: #1b2e7a;
+  --primary-blue-light: #eaedfc;
+  
+  --accent-red: #d51243; /* Price highlight, discount badges, countdowns */
+  --accent-red-hover: #b00e36;
+  --accent-yellow: #ffb900; /* Star ratings, highlight banners */
+  --accent-yellow-light: #fffbeb;
+
+  --text-primary: #2b2b2d;
+  --text-secondary: #71778e;
+  --text-muted: #9b9fb4;
+
+  --border-color: #e5e8ec;
+  --border-hover: #cbd3dc;
+  
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-fast: all 0.15s ease;
+  
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg-light);
+  min-height: 100vh;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
 a {
@@ -42,8 +68,31 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+button {
+  font-family: var(--font-sans);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-light);
+}
+::-webkit-scrollbar-thumb {
+  background: #ccd0db;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #abb0be;
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease forwards;
 }
