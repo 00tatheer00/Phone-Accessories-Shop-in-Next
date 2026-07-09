@@ -5,6 +5,35 @@ import Link from "next/link";
 import { useCart } from "../context/CartContext";
 import styles from "./wishlist.module.css";
 
+// Dynamic Pastel Background Colors by Category
+const getCategoryBgColor = (category) => {
+  switch (category) {
+    case "Gaming": return "#dbf5e6"; // Pastel green
+    case "Headphone": return "#ebdcf9"; // Pastel purple
+    case "Mobile & Tablets": return "#fde8d7"; // Pastel peach
+    case "Smartwatches": return "#dceefd"; // Pastel blue
+    case "Computer & Laptop": return "#f9e2e7"; // Pastel pink
+    case "Television": return "#fbf0d8"; // Pastel yellow
+    default: return "#eef1f6"; // General light gray
+  }
+};
+
+// Simulated Color selection dots by Category
+const getCategoryColorDots = (category) => {
+  switch (category) {
+    case "Gaming":
+      return ["#000000", "#ffffff", "#4b5563", "#3b82f6"];
+    case "Headphone":
+      return ["#f6c3cb", "#97b1a6", "#3c3d40", "#ffffff"];
+    case "Mobile & Tablets":
+      return ["#111827", "#f3f4f6", "#b45309", "#2563eb"];
+    case "Smartwatches":
+      return ["#10b981", "#ef4444", "#3b82f6", "#000000"];
+    default:
+      return ["#000000", "#e2e8f0", "#f87171", "#facc15", "#3b82f6"];
+  }
+};
+
 export default function Wishlist() {
   const { wishlist, toggleWishlist, moveToCart } = useCart();
 
@@ -40,8 +69,7 @@ export default function Wishlist() {
               ✕
             </button>
 
-            {/* Product image */}
-            <div className={styles.productImgContainer} onClick={() => moveToCart(item)}>
+            <div className={styles.productImgContainer} style={{ backgroundColor: getCategoryBgColor(item.category) }} onClick={() => moveToCart(item)}>
               <Image
                 src={item.img}
                 alt={item.title}
@@ -49,6 +77,17 @@ export default function Wishlist() {
                 className={styles.productImg}
                 sizes="150px"
               />
+              {/* Floating quick-cart action button */}
+              <button 
+                className={styles.floatingCartBtn}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  moveToCart(item);
+                }}
+                title="Move to Cart"
+              >
+                +
+              </button>
             </div>
 
             {/* Category & Title */}
@@ -62,13 +101,15 @@ export default function Wishlist() {
               ${item.price.toFixed(2)}
             </div>
 
-            {/* Move to cart trigger */}
-            <button
-              className={styles.btnMoveToCart}
-              onClick={() => moveToCart(item)}
-            >
-              Move to Cart 🛒
-            </button>
+            {/* Color selection dots */}
+            <div className={styles.colorSelectionBar}>
+              <span className={styles.colorPillLabel}>Colors</span>
+              <div className={styles.colorSelectionDots}>
+                {getCategoryColorDots(item.category).map((color, idx) => (
+                  <span key={idx} className={styles.selectionDot} style={{ backgroundColor: color }} />
+                ))}
+              </div>
+            </div>
 
           </div>
         ))}

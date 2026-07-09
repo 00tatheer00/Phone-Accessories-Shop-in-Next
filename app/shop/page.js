@@ -29,6 +29,35 @@ const PRODUCTS_DATABASE = [
   { id: "p19", category: "Accessories", title: "Wireless Ergonomic Keyboard and Mouse Combo", price: 54.99, rating: 5, reviews: 75, img: "/images/smartwatch.png" },
 ];
 
+// Dynamic Pastel Background Colors by Category
+const getCategoryBgColor = (category) => {
+  switch (category) {
+    case "Gaming": return "#dbf5e6"; // Pastel green
+    case "Headphone": return "#ebdcf9"; // Pastel purple
+    case "Mobile & Tablets": return "#fde8d7"; // Pastel peach
+    case "Smartwatches": return "#dceefd"; // Pastel blue
+    case "Computer & Laptop": return "#f9e2e7"; // Pastel pink
+    case "Television": return "#fbf0d8"; // Pastel yellow
+    default: return "#eef1f6"; // General light gray
+  }
+};
+
+// Simulated Color selection dots by Category
+const getCategoryColorDots = (category) => {
+  switch (category) {
+    case "Gaming":
+      return ["#000000", "#ffffff", "#4b5563", "#3b82f6"];
+    case "Headphone":
+      return ["#f6c3cb", "#97b1a6", "#3c3d40", "#ffffff"];
+    case "Mobile & Tablets":
+      return ["#111827", "#f3f4f6", "#b45309", "#2563eb"];
+    case "Smartwatches":
+      return ["#10b981", "#ef4444", "#3b82f6", "#000000"];
+    default:
+      return ["#000000", "#e2e8f0", "#f87171", "#facc15", "#3b82f6"];
+  }
+};
+
 function ShopContent() {
   const { addToCart, toggleWishlist, isInWishlist } = useCart();
   const searchParams = useSearchParams();
@@ -284,7 +313,7 @@ function ShopContent() {
                   {isInWishlist(product.id) ? "♥" : "♡"}
                 </button>
 
-                <div className={styles.productImgContainer} onClick={() => addToCart(product)}>
+                <div className={styles.productImgContainer} style={{ backgroundColor: getCategoryBgColor(product.category) }} onClick={() => addToCart(product)}>
                   <Image
                     src={product.img}
                     alt={product.title}
@@ -292,6 +321,17 @@ function ShopContent() {
                     className={styles.productImg}
                     sizes="180px"
                   />
+                  {/* Floating quick-cart action button */}
+                  <button 
+                    className={styles.floatingCartBtn}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      addToCart(product);
+                    }}
+                    title="Quick Add to Cart"
+                  >
+                    +
+                  </button>
                 </div>
 
                 <span className={styles.productCategory}>{product.category}</span>
@@ -308,9 +348,16 @@ function ShopContent() {
                     <span className={styles.newPrice}>${product.price.toFixed(2)}</span>
                     {product.oldPrice && <span className={styles.oldPrice}>{product.oldPrice}</span>}
                   </div>
-                  <button className={styles.btnAddToCart} onClick={() => addToCart(product)}>
-                    Add To Cart
-                  </button>
+                </div>
+
+                {/* Color dots bar */}
+                <div className={styles.colorSelectionBar}>
+                  <span className={styles.colorPillLabel}>Colors</span>
+                  <div className={styles.colorSelectionDots}>
+                    {getCategoryColorDots(product.category).map((color, idx) => (
+                      <span key={idx} className={styles.selectionDot} style={{ backgroundColor: color }} />
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

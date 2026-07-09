@@ -126,6 +126,35 @@ const TRENDING_PRODUCTS = {
   ],
 };
 
+// Dynamic Pastel Background Colors by Category
+const getCategoryBgColor = (category) => {
+  switch (category) {
+    case "Gaming": return "#dbf5e6"; // Pastel green
+    case "Headphone": return "#ebdcf9"; // Pastel purple
+    case "Mobile & Tablets": return "#fde8d7"; // Pastel peach
+    case "Smartwatches": return "#dceefd"; // Pastel blue
+    case "Computer & Laptop": return "#f9e2e7"; // Pastel pink
+    case "Television": return "#fbf0d8"; // Pastel yellow
+    default: return "#eef1f6"; // General light gray
+  }
+};
+
+// Simulated Color selection dots by Category
+const getCategoryColorDots = (category) => {
+  switch (category) {
+    case "Gaming":
+      return ["#000000", "#ffffff", "#4b5563", "#3b82f6"];
+    case "Headphone":
+      return ["#f6c3cb", "#97b1a6", "#3c3d40", "#ffffff"];
+    case "Mobile & Tablets":
+      return ["#111827", "#f3f4f6", "#b45309", "#2563eb"];
+    case "Smartwatches":
+      return ["#10b981", "#ef4444", "#3b82f6", "#000000"];
+    default:
+      return ["#000000", "#e2e8f0", "#f87171", "#facc15", "#3b82f6"];
+  }
+};
+
 export default function Storefront() {
   const { addToCart, toggleWishlist, isInWishlist } = useCart();
 
@@ -303,7 +332,7 @@ export default function Storefront() {
                 {isInWishlist(deal.id) ? "♥" : "♡"}
               </button>
 
-              <div className={styles.productImgContainer} onClick={() => addToCart(deal)}>
+              <div className={styles.productImgContainer} style={{ backgroundColor: getCategoryBgColor(deal.category) }} onClick={() => addToCart(deal)}>
                 <Image 
                   src={deal.img}
                   alt={deal.title}
@@ -311,6 +340,17 @@ export default function Storefront() {
                   className={styles.productImg}
                   sizes="150px"
                 />
+                {/* Floating quick-cart action button */}
+                <button 
+                  className={styles.floatingCartBtn}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addToCart(deal);
+                  }}
+                  title="Quick Add to Cart"
+                >
+                  +
+                </button>
               </div>
               <span className={styles.productCategory}>{deal.category}</span>
               <h4 className={styles.productTitle} onClick={() => addToCart(deal)}>{deal.title}</h4>
@@ -326,6 +366,16 @@ export default function Storefront() {
                 <span className={styles.oldPrice}>{deal.oldPrice}</span>
               </div>
 
+              {/* Color dots bar */}
+              <div className={styles.colorSelectionBar} style={{ marginBottom: "16px" }}>
+                <span className={styles.colorPillLabel}>Colors</span>
+                <div className={styles.colorSelectionDots}>
+                  {getCategoryColorDots(deal.category).map((color, idx) => (
+                    <span key={idx} className={styles.selectionDot} style={{ backgroundColor: color }} />
+                  ))}
+                </div>
+              </div>
+
               {/* Progress Bar */}
               <div className={styles.stockWrapper}>
                 <div className={styles.stockTexts}>
@@ -338,16 +388,6 @@ export default function Storefront() {
                     style={{ width: `${(deal.sold / deal.total) * 100}%` }}
                   />
                 </div>
-              </div>
-              
-              <div style={{ marginTop: "12px" }}>
-                <button 
-                  className={styles.btnAddToCart} 
-                  style={{ width: "100%", padding: "8px 0" }}
-                  onClick={() => addToCart(deal)}
-                >
-                  Add to Cart 🛒
-                </button>
               </div>
             </div>
           ))}
@@ -468,55 +508,45 @@ export default function Storefront() {
         </div>
 
         <div className={styles.trendingGrid}>
-          {/* First product item */}
-          {TRENDING_PRODUCTS[activeTab]?.[0] && (
-            <div className={styles.productCard}>
-              <span className={styles.discountBadge}>{TRENDING_PRODUCTS[activeTab][0].discount}</span>
+          {TRENDING_PRODUCTS[activeTab]?.slice(0, 4).map((product, index) => (
+            <div key={index} className={styles.productCard}>
+              <span className={styles.discountBadge}>{product.discount}</span>
               <button 
-                className={`${styles.wishlistBtn} ${isInWishlist(TRENDING_PRODUCTS[activeTab][0].id) ? styles.wishlistBtnActive : ""}`}
-                onClick={() => toggleWishlist(TRENDING_PRODUCTS[activeTab][0])}
+                className={`${styles.wishlistBtn} ${isInWishlist(product.id) ? styles.wishlistBtnActive : ""}`}
+                onClick={() => toggleWishlist(product)}
                 title="Wishlist"
               >
                 ♥
               </button>
-              <div className={styles.productImgContainer} onClick={() => addToCart(TRENDING_PRODUCTS[activeTab][0])}>
-                <Image src={TRENDING_PRODUCTS[activeTab][0].img} alt={TRENDING_PRODUCTS[activeTab][0].title} fill className={styles.productImg} sizes="150px" />
+              <div className={styles.productImgContainer} style={{ backgroundColor: getCategoryBgColor(product.category) }} onClick={() => addToCart(product)}>
+                <Image src={product.img} alt={product.title} fill className={styles.productImg} sizes="150px" />
+                <button 
+                  className={styles.floatingCartBtn}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addToCart(product);
+                  }}
+                >
+                  +
+                </button>
               </div>
-              <span className={styles.productCategory}>{TRENDING_PRODUCTS[activeTab][0].category}</span>
-              <h4 className={styles.productTitle} onClick={() => addToCart(TRENDING_PRODUCTS[activeTab][0])}>{TRENDING_PRODUCTS[activeTab][0].title}</h4>
-              <div className={styles.ratingContainer}>★★★★★ <span className={styles.ratingCount}>({TRENDING_PRODUCTS[activeTab][0].reviews})</span></div>
+              <span className={styles.productCategory}>{product.category}</span>
+              <h4 className={styles.productTitle} onClick={() => addToCart(product)}>{product.title}</h4>
+              <div className={styles.ratingContainer}>★★★★★ <span className={styles.ratingCount}>({product.reviews})</span></div>
               <div className={styles.priceRow}>
-                <span className={styles.newPrice}>${TRENDING_PRODUCTS[activeTab][0].price.toFixed(2)}</span>
-                <span className={styles.oldPrice}>{TRENDING_PRODUCTS[activeTab][0].oldPrice}</span>
+                <span className={styles.newPrice}>${product.price.toFixed(2)}</span>
+                <span className={styles.oldPrice}>{product.oldPrice}</span>
               </div>
-              <button className={styles.btnAddToCart} onClick={() => addToCart(TRENDING_PRODUCTS[activeTab][0])}>Add to Cart 🛒</button>
+              <div className={styles.colorSelectionBar}>
+                <span className={styles.colorPillLabel}>Colors</span>
+                <div className={styles.colorSelectionDots}>
+                  {getCategoryColorDots(product.category).map((color, idx) => (
+                    <span key={idx} className={styles.selectionDot} style={{ backgroundColor: color }} />
+                  ))}
+                </div>
+              </div>
             </div>
-          )}
-
-          {/* Second product item */}
-          {TRENDING_PRODUCTS[activeTab]?.[1] && (
-            <div className={styles.productCard}>
-              <span className={styles.discountBadge}>{TRENDING_PRODUCTS[activeTab][1].discount}</span>
-              <button 
-                className={`${styles.wishlistBtn} ${isInWishlist(TRENDING_PRODUCTS[activeTab][1].id) ? styles.wishlistBtnActive : ""}`}
-                onClick={() => toggleWishlist(TRENDING_PRODUCTS[activeTab][1])}
-                title="Wishlist"
-              >
-                ♥
-              </button>
-              <div className={styles.productImgContainer} onClick={() => addToCart(TRENDING_PRODUCTS[activeTab][1])}>
-                <Image src={TRENDING_PRODUCTS[activeTab][1].img} alt={TRENDING_PRODUCTS[activeTab][1].title} fill className={styles.productImg} sizes="150px" />
-              </div>
-              <span className={styles.productCategory}>{TRENDING_PRODUCTS[activeTab][1].category}</span>
-              <h4 className={styles.productTitle} onClick={() => addToCart(TRENDING_PRODUCTS[activeTab][1])}>{TRENDING_PRODUCTS[activeTab][1].title}</h4>
-              <div className={styles.ratingContainer}>★★★★☆ <span className={styles.ratingCount}>({TRENDING_PRODUCTS[activeTab][1].reviews})</span></div>
-              <div className={styles.priceRow}>
-                <span className={styles.newPrice}>${TRENDING_PRODUCTS[activeTab][1].price.toFixed(2)}</span>
-                <span className={styles.oldPrice}>{TRENDING_PRODUCTS[activeTab][1].oldPrice}</span>
-              </div>
-              <button className={styles.btnAddToCart} onClick={() => addToCart(TRENDING_PRODUCTS[activeTab][1])}>Add to Cart 🛒</button>
-            </div>
-          )}
+          ))}
 
           {/* Middle FEATURED headphone card layout in trending grid */}
           <div className={styles.trendingGridFeatured}>
@@ -591,78 +621,6 @@ export default function Storefront() {
               Add to Cart 🛒
             </button>
           </div>
-
-          {/* Third product item */}
-          {TRENDING_PRODUCTS[activeTab]?.[2] ? (
-            <div className={styles.productCard}>
-              <span className={styles.discountBadge}>{TRENDING_PRODUCTS[activeTab][2].discount}</span>
-              <button 
-                className={`${styles.wishlistBtn} ${isInWishlist(TRENDING_PRODUCTS[activeTab][2].id) ? styles.wishlistBtnActive : ""}`}
-                onClick={() => toggleWishlist(TRENDING_PRODUCTS[activeTab][2])}
-                title="Wishlist"
-              >
-                ♥
-              </button>
-              <div className={styles.productImgContainer} onClick={() => addToCart(TRENDING_PRODUCTS[activeTab][2])}>
-                <Image src={TRENDING_PRODUCTS[activeTab][2].img} alt={TRENDING_PRODUCTS[activeTab][2].title} fill className={styles.productImg} sizes="150px" />
-              </div>
-              <span className={styles.productCategory}>{TRENDING_PRODUCTS[activeTab][2].category}</span>
-              <h4 className={styles.productTitle} onClick={() => addToCart(TRENDING_PRODUCTS[activeTab][2])}>{TRENDING_PRODUCTS[activeTab][2].title}</h4>
-              <div className={styles.ratingContainer}>★★★★★ <span className={styles.ratingCount}>({TRENDING_PRODUCTS[activeTab][2].reviews})</span></div>
-              <div className={styles.priceRow}>
-                <span className={styles.newPrice}>${TRENDING_PRODUCTS[activeTab][2].price.toFixed(2)}</span>
-                <span className={styles.oldPrice}>{TRENDING_PRODUCTS[activeTab][2].oldPrice}</span>
-              </div>
-              <button className={styles.btnAddToCart} onClick={() => addToCart(TRENDING_PRODUCTS[activeTab][2])}>Add to Cart 🛒</button>
-            </div>
-          ) : (
-            <div className={styles.productCard}>
-              <div className={styles.productImgContainer} onClick={() => addToCart({ id: "watch-series-8", title: "Watch Series 8 Premium Titanium Cellular", price: 299.99, img: "/images/smartwatch.png", category: "Smartwatches" })}>
-                <Image src="/images/smartwatch.png" alt="Dummy Active watch" fill className={styles.productImg} sizes="150px" />
-              </div>
-              <span className={styles.productCategory}>Smartwatch</span>
-              <h4 className={styles.productTitle} onClick={() => addToCart({ id: "watch-series-8", title: "Watch Series 8 Premium Titanium Cellular", price: 299.99, img: "/images/smartwatch.png", category: "Smartwatches" })}>Watch Series 8 Premium Titanium Cellular</h4>
-              <div className={styles.ratingContainer}>★★★★☆ <span className={styles.ratingCount}>(15)</span></div>
-              <div className={styles.priceRow}><span className={styles.newPrice}>$299.99</span></div>
-              <button className={styles.btnAddToCart} onClick={() => addToCart({ id: "watch-series-8", title: "Watch Series 8 Premium Titanium Cellular", price: 299.99, img: "/images/smartwatch.png", category: "Smartwatches" })}>Add to Cart 🛒</button>
-            </div>
-          )}
-
-          {/* Fourth product item */}
-          {TRENDING_PRODUCTS[activeTab]?.[3] ? (
-            <div className={styles.productCard}>
-              <span className={styles.discountBadge}>{TRENDING_PRODUCTS[activeTab][3].discount}</span>
-              <button 
-                className={`${styles.wishlistBtn} ${isInWishlist(TRENDING_PRODUCTS[activeTab][3].id) ? styles.wishlistBtnActive : ""}`}
-                onClick={() => toggleWishlist(TRENDING_PRODUCTS[activeTab][3])}
-                title="Wishlist"
-              >
-                ♥
-              </button>
-              <div className={styles.productImgContainer} onClick={() => addToCart(TRENDING_PRODUCTS[activeTab][3])}>
-                <Image src={TRENDING_PRODUCTS[activeTab][3].img} alt={TRENDING_PRODUCTS[activeTab][3].title} fill className={styles.productImg} sizes="150px" />
-              </div>
-              <span className={styles.productCategory}>{TRENDING_PRODUCTS[activeTab][3].category}</span>
-              <h4 className={styles.productTitle} onClick={() => addToCart(TRENDING_PRODUCTS[activeTab][3])}>{TRENDING_PRODUCTS[activeTab][3].title}</h4>
-              <div className={styles.ratingContainer}>★★★★★ <span className={styles.ratingCount}>({TRENDING_PRODUCTS[activeTab][3].reviews})</span></div>
-              <div className={styles.priceRow}>
-                <span className={styles.newPrice}>${TRENDING_PRODUCTS[activeTab][3].price.toFixed(2)}</span>
-                <span className={styles.oldPrice}>{TRENDING_PRODUCTS[activeTab][3].oldPrice}</span>
-              </div>
-              <button className={styles.btnAddToCart} onClick={() => addToCart(TRENDING_PRODUCTS[activeTab][3])}>Add to Cart 🛒</button>
-            </div>
-          ) : (
-            <div className={styles.productCard}>
-              <div className={styles.productImgContainer} onClick={() => addToCart({ id: "iphone-15-unlocked", title: "iPhone 15 Unlocked 128GB Blue", price: 799.99, img: "/images/iphone-hero.png", category: "Mobile & Tablets" })}>
-                <Image src="/images/iphone-hero.png" alt="iPhone 15 Blue" fill className={styles.productImg} sizes="150px" />
-              </div>
-              <span className={styles.productCategory}>Mobile & Tablets</span>
-              <h4 className={styles.productTitle} onClick={() => addToCart({ id: "iphone-15-unlocked", title: "iPhone 15 Unlocked 128GB Blue", price: 799.99, img: "/images/iphone-hero.png", category: "Mobile & Tablets" })}>iPhone 15 Unlocked 128GB Blue</h4>
-              <div className={styles.ratingContainer}>★★★★★ <span className={styles.ratingCount}>(88)</span></div>
-              <div className={styles.priceRow}><span className={styles.newPrice}>$799.99</span></div>
-              <button className={styles.btnAddToCart} onClick={() => addToCart({ id: "iphone-15-unlocked", title: "iPhone 15 Unlocked 128GB Blue", price: 799.99, img: "/images/iphone-hero.png", category: "Mobile & Tablets" })}>Add to Cart 🛒</button>
-            </div>
-          )}
         </div>
       </section>
 

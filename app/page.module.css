@@ -770,65 +770,76 @@
 
 /* Product Card */
 .productCard {
-  background-color: var(--bg-pure);
-  padding: 20px;
+  background: transparent;
+  padding: 0;
   display: flex;
   flex-direction: column;
   position: relative;
   transition: var(--transition-smooth);
+  border: none;
 }
 
 .productCard:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  z-index: 10;
+  transform: none;
+  box-shadow: none;
 }
 
 .discountBadge {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 14px;
+  left: 14px;
   background-color: var(--accent-red);
   color: white;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 3px;
-  z-index: 2;
+  padding: 4px 8px;
+  border-radius: 6px;
+  z-index: 4;
 }
 
 .productImgContainer {
   position: relative;
   width: 100%;
-  aspect-ratio: 1;
-  margin-bottom: 16px;
+  aspect-ratio: 1.15;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
+}
+
+.productCard:hover .productImgContainer {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
 .productImg {
   object-fit: contain;
+  width: 75% !important;
+  height: 75% !important;
+  position: relative !important;
+  transition: transform 0.35s ease;
+}
+
+.productCard:hover .productImg {
+  transform: scale(1.05) rotate(-2deg);
 }
 
 .productCategory {
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 6px;
+  display: none; /* Hide category labels to match clean shoe-style list */
 }
 
 .productTitle {
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.35;
-  margin-bottom: 8px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  height: 38px;
+  margin-bottom: 6px;
   cursor: pointer;
+  transition: var(--transition-fast);
 }
 
 .productTitle:hover {
@@ -853,8 +864,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 16px;
-  margin-top: auto;
+  margin-bottom: 12px;
 }
 
 .oldPrice {
@@ -866,7 +876,73 @@
 .newPrice {
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--accent-red);
+  color: #f04f64; /* Coral price */
+}
+
+/* Floating Quick Actions */
+.floatingCartBtn {
+  position: absolute;
+  bottom: -50px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 5;
+  font-size: 1.15rem;
+  font-weight: 700;
+  opacity: 0;
+}
+
+.productImgContainer:hover .floatingCartBtn {
+  bottom: 14px;
+  opacity: 1;
+}
+
+.floatingCartBtn:hover {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* Color selection dots styling */
+.colorSelectionBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.colorPillLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background-color: #f1f5f9;
+  padding: 3px 8px;
+  border-radius: 12px;
+  letter-spacing: 0.02em;
+}
+
+.colorSelectionDots {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.selectionDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .stockWrapper {
