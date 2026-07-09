@@ -289,7 +289,7 @@
 
 /* Hero Slider */
 .heroSlider {
-  background: linear-gradient(135deg, #0e1e52 0%, #1d368b 60%, #2e4fc8 100%);
+  background: radial-gradient(circle at 70% 30%, #1b358a 0%, #090f26 65%, #03050f 100%);
   position: relative;
   overflow: hidden;
   max-width: 1300px;

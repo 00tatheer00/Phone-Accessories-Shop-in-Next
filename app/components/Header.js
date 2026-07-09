@@ -2,14 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useCart } from "../context/CartContext";
 import styles from "./Header.module.css";
 
 export default function Header() {
-  const { cartCount, cartTotal, wishlist } = useCart();
+  const { cart, cartCount, cartTotal, wishlist } = useCart();
   const pathname = usePathname();
   const router = useRouter();
+
+  // Header Cart Popover display state
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [searchCategory, setSearchCategory] = useState("All Categories");
@@ -82,7 +86,7 @@ export default function Header() {
             </button>
           </form>
 
-          {/* Cart / User Info */}
+          {/* Cart / Wishlist / User Info */}
           <div className={styles.headerRight}>
             <Link href="/wishlist" className={styles.headerIconWrapper} title="Wishlist">
               ♡
@@ -93,16 +97,73 @@ export default function Header() {
               👤
             </div>
 
-            <Link href="/cart" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <div className={styles.headerIconWrapper} title="Shopping Cart">
-                🛒
-                <span className={styles.iconBadge}>{cartCount}</span>
-              </div>
-              <div className={styles.cartInfo}>
-                <span>Your Cart:</span>
-                <span className={styles.cartValue}>${cartTotal.toFixed(2)}</span>
-              </div>
-            </Link>
+            {/* Hover-triggered Cart wrapper */}
+            <div 
+              className={styles.cartWrapper}
+              onMouseEnter={() => setIsCartOpen(true)}
+              onMouseLeave={() => setIsCartOpen(false)}
+            >
+              <Link href="/cart" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <div className={styles.headerIconWrapper} title="Shopping Cart">
+                  🛒
+                  <span className={styles.iconBadge}>{cartCount}</span>
+                </div>
+                <div className={styles.cartInfo}>
+                  <span>Your Cart:</span>
+                  <span className={styles.cartValue}>${cartTotal.toFixed(2)}</span>
+                </div>
+              </Link>
+
+              {/* Cart Popover dropdown */}
+              {isCartOpen && (
+                <div className={styles.cartPopOver}>
+                  {cart.length > 0 ? (
+                    <>
+                      <div className={styles.popOverList}>
+                        {cart.map((item) => (
+                          <div key={item.id} className={styles.popOverItem}>
+                            <div className={styles.popOverImgWrapper}>
+                              <Image 
+                                src={item.img} 
+                                alt={item.title} 
+                                fill 
+                                className={styles.popOverImg}
+                                sizes="40px"
+                              />
+                            </div>
+                            <div className={styles.popOverDetails}>
+                              <span className={styles.popOverTitle}>{item.title}</span>
+                              <span className={styles.popOverPriceQty}>
+                                {item.quantity} x <span className={styles.popOverPriceBold}>${item.price.toFixed(2)}</span>
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className={styles.popOverTotalRow}>
+                        <span className={styles.popOverTotalLabel}>Subtotal:</span>
+                        <span className={styles.popOverTotalVal}>${cartTotal.toFixed(2)}</span>
+                      </div>
+
+                      <div className={styles.popOverActions}>
+                        <Link href="/cart" className={`${styles.popOverBtn} ${styles.popOverBtnOutline}`}>
+                          View Cart
+                        </Link>
+                        <Link href="/checkout" className={styles.popOverBtn}>
+                          Checkout
+                        </Link>
+                      </div>
+                    </>
+                  ) : (
+                    <div className={styles.popOverEmpty}>
+                      Your cart is currently empty.
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
           </div>
         </div>
       </header>

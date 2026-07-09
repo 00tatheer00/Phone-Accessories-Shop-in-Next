@@ -39,6 +39,9 @@ function ShopContent() {
   const [priceRange, setPriceRange] = useState("all");
   const [sortBy, setSortBy] = useState("default");
 
+  // Shimmer skeleton loading state
+  const [isLoading, setIsLoading] = useState(true);
+
   // Read URL search params
   useEffect(() => {
     const urlQuery = searchParams.get("search");
@@ -51,6 +54,15 @@ function ShopContent() {
       setSelectedCategories([urlCategory]);
     }
   }, [searchParams]);
+
+  // Simulated Loader Delay on filter updates
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 750);
+    return () => clearTimeout(timer);
+  }, [searchQuery, selectedCategories, priceRange, sortBy]);
 
   // Category counts computation
   const getCategoryCount = (category) => {
@@ -241,7 +253,23 @@ function ShopContent() {
         )}
 
         {/* Catalog Grid */}
-        {sortedProducts.length > 0 ? (
+        {isLoading ? (
+          <div className={styles.productsGrid}>
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className={styles.skeletonCard}>
+                <div className={`${styles.skeletonImage} ${styles.shimmer}`} />
+                <div className={`${styles.skeletonCategory} ${styles.shimmer}`} />
+                <div className={`${styles.skeletonTitle} ${styles.shimmer}`} />
+                <div className={`${styles.skeletonTitleShort} ${styles.shimmer}`} />
+                <div className={`${styles.skeletonRating} ${styles.shimmer}`} />
+                <div className={styles.skeletonPriceRow}>
+                  <div className={`${styles.skeletonPrice} ${styles.shimmer}`} />
+                  <div className={`${styles.skeletonBtn} ${styles.shimmer}`} />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : sortedProducts.length > 0 ? (
           <div className={styles.productsGrid}>
             {sortedProducts.map((product) => (
               <div key={product.id} className={styles.shopProductCard}>

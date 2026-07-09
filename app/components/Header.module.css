@@ -282,3 +282,169 @@
 .navExtraLink:hover {
   color: white;
 }
+
+/* Cart Dropdown Popover */
+.cartWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.cartPopOver {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 330px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  padding: 20px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: default;
+  pointer-events: auto;
+  margin-top: 12px;
+  animation: toastSlideIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+/* Simple triangle indicator */
+.cartPopOver::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 32px;
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  transform: rotate(45deg);
+}
+
+.popOverList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.popOverItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.popOverItem:last-child {
+  border-bottom: none;
+}
+
+.popOverImgWrapper {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  background-color: #f7f8fa;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.popOverImg {
+  object-fit: contain;
+}
+
+.popOverDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.78rem;
+}
+
+.popOverTitle {
+  font-weight: 700;
+  color: var(--text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.popOverPriceQty {
+  color: var(--text-secondary);
+}
+
+.popOverPriceBold {
+  font-weight: 700;
+  color: var(--accent-red);
+}
+
+.popOverTotalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 12px;
+}
+
+.popOverTotalLabel {
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.popOverTotalVal {
+  font-weight: 800;
+  color: var(--accent-red);
+  font-size: 1.05rem;
+}
+
+.popOverActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.popOverBtn {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.popOverBtn:hover {
+  background-color: var(--primary-blue-hover);
+}
+
+.popOverBtnOutline {
+  background-color: #f8f9fa;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.popOverBtnOutline:hover {
+  background-color: #e9ecef;
+}
+
+.popOverEmpty {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
