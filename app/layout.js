@@ -23,12 +23,12 @@ const inter = Inter({
 
 // Simulated Sales Data
 const SIMULATED_SALES = [
-  { city: "Chicago, USA", product: "DualSense Edge PS5 Controller", img: "/images/ps5-controller.png" },
-  { city: "Paris, France", product: "B&O Beoplay E8 3.0 Earbuds", img: "/images/beoplay-earbuds.png" },
-  { city: "Tokyo, Japan", product: "AirPods Max Wireless Headphones", img: "/images/pink-headphones.png" },
-  { city: "London, UK", product: "Marshall Acton III Speaker", img: "/images/marshall-speaker.png" },
-  { city: "Berlin, Germany", product: "Watch Creator Series 4 GPS", img: "/images/smartwatch.png" },
-  { city: "Toronto, Canada", product: "iPad Pro 12.9-inch Space Gray", img: "/images/iphone-hero.png" },
+  { city: "Chicago, USA", product: "DualSense Edge PS5 Controller", img: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=600&auto=format&fit=crop" },
+  { city: "Paris, France", product: "B&O Beoplay E8 3.0 Earbuds", img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=600&auto=format&fit=crop" },
+  { city: "Tokyo, Japan", product: "AirPods Max Wireless Headphones", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop" },
+  { city: "London, UK", product: "Marshall Acton III Speaker", img: "https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=600&auto=format&fit=crop" },
+  { city: "Berlin, Germany", product: "Watch Creator Series 4 GPS", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop" },
+  { city: "Toronto, Canada", product: "iPad Pro 12.9-inch Space Gray", img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=600&auto=format&fit=crop" },
 ];
 
 function ECommerceAppWrapper({ children }) {

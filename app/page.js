@@ -24,7 +24,7 @@ const FEATURED_DEALS = [
     id: "deal-1",
     category: "Smartwatches",
     title: "Watch Creator Series 4 GPS + Cellular 44mm Active Strap",
-    img: "/images/smartwatch.png",
+    img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop",
     discount: "-15%",
     oldPrice: "$450.00",
     newPrice: "$382.50",
@@ -38,7 +38,7 @@ const FEATURED_DEALS = [
     id: "deal-2",
     category: "Headphone",
     title: "AirPods Max Wireless Over-Ear Headphones - Space Gray",
-    img: "/images/pink-headphones.png",
+    img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop",
     discount: "-10%",
     oldPrice: "$549.00",
     newPrice: "$494.10",
@@ -52,7 +52,7 @@ const FEATURED_DEALS = [
     id: "deal-3",
     category: "Mobile & Tablets",
     title: "Apple iPad Pro 12.9-inch Wi-Fi 256GB - Space Gray",
-    img: "/images/iphone-hero.png",
+    img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=600&auto=format&fit=crop",
     discount: "-8%",
     oldPrice: "$1099.00",
     newPrice: "$1011.08",
@@ -66,7 +66,7 @@ const FEATURED_DEALS = [
     id: "deal-4",
     category: "Computer & Laptop",
     title: "MacBook Air 13-inch M3 Chip 8GB RAM 256GB SSD",
-    img: "/images/smartwatch.png",
+    img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=600&auto=format&fit=crop",
     discount: "-12%",
     oldPrice: "$1099.00",
     newPrice: "$967.12",
@@ -80,7 +80,7 @@ const FEATURED_DEALS = [
     id: "deal-5",
     category: "Television",
     title: "Sceptre 50-inch Class 4K UHD LED TV (U515CV-U)",
-    img: "/images/marshall-speaker.png",
+    img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=600&auto=format&fit=crop",
     discount: "-25%",
     oldPrice: "$399.99",
     newPrice: "$299.99",
@@ -94,7 +94,7 @@ const FEATURED_DEALS = [
     id: "deal-6",
     category: "Mobile & Tablets",
     title: "iPhone 15 Pro Max 256GB - Natural Titanium Unlocked",
-    img: "/images/iphone-hero.png",
+    img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=600&auto=format&fit=crop",
     discount: "-5%",
     oldPrice: "$1199.00",
     newPrice: "$1139.05",
@@ -109,20 +109,20 @@ const FEATURED_DEALS = [
 // Product listings for Trending This Week (tabbed grid)
 const TRENDING_PRODUCTS = {
   bestSeller: [
-    { id: "trend-1", category: "Mobile & Tablets", title: "iPhone 15 Pro Max 256GB Blue Titanium", img: "/images/iphone-hero.png", discount: "-10%", oldPrice: "$1199.00", newPrice: "$1079.10", price: 1079.10, rating: 5, reviews: 31 },
-    { id: "trend-2", category: "Computer & Laptop", title: "MacBook Pro 14-inch M3 Pro Chip 512GB", img: "/images/smartwatch.png", discount: "-5%", oldPrice: "$1999.00", newPrice: "$1899.05", price: 1899.05, rating: 5, reviews: 19 },
-    { id: "trend-3", category: "Smartwatches", title: "SmartWatch Active Series 3 Green Titanium", img: "/images/smartwatch.png", discount: "-15%", oldPrice: "$299.99", newPrice: "$254.99", price: 254.99, rating: 4, reviews: 11 },
-    { id: "trend-4", category: "Accessories", title: "Portable Power Bank 10000mAh Dual Port", img: "/images/beoplay-earbuds.png", discount: "-20%", oldPrice: "$39.99", newPrice: "$31.99", price: 31.99, rating: 4, reviews: 25 },
+    { id: "trend-1", category: "Mobile & Tablets", title: "iPhone 15 Pro Max 256GB Blue Titanium", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=600&auto=format&fit=crop", discount: "-10%", oldPrice: "$1199.00", newPrice: "$1079.10", price: 1079.10, rating: 5, reviews: 31 },
+    { id: "trend-2", category: "Computer & Laptop", title: "MacBook Pro 14-inch M3 Pro Chip 512GB", img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=600&auto=format&fit=crop", discount: "-5%", oldPrice: "$199.00", newPrice: "$189.05", price: 189.05, rating: 5, reviews: 19 },
+    { id: "trend-3", category: "Smartwatches", title: "SmartWatch Active Series 3 Green Titanium", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop", discount: "-15%", oldPrice: "$299.99", newPrice: "$254.99", price: 254.99, rating: 4, reviews: 11 },
+    { id: "trend-4", category: "Accessories", title: "Portable Power Bank 10000mAh Dual Port", img: "https://images.unsplash.com/photo-1609592424109-dd9892f1b177?q=80&w=600&auto=format&fit=crop", discount: "-20%", oldPrice: "$39.99", newPrice: "$31.99", price: 31.99, rating: 4, reviews: 25 },
   ],
   sales: [
-    { id: "trend-5", category: "Gaming", title: "PlayStation 5 Console Digital Edition", img: "/images/ps5-controller.png", discount: "-15%", oldPrice: "$399.99", newPrice: "$339.99", price: 339.99, rating: 5, reviews: 68 },
-    { id: "trend-6", category: "Accessories", title: "Marshall Acton III Bluetooth Speaker", img: "/images/marshall-speaker.png", discount: "-30%", oldPrice: "$279.99", newPrice: "$195.99", price: 195.99, rating: 4, reviews: 14 },
+    { id: "trend-5", category: "Gaming", title: "PlayStation 5 Console Digital Edition", img: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=600&auto=format&fit=crop", discount: "-15%", oldPrice: "$399.99", newPrice: "$339.99", price: 339.99, rating: 5, reviews: 68 },
+    { id: "trend-6", category: "Accessories", title: "Marshall Acton III Bluetooth Speaker", img: "https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=600&auto=format&fit=crop", discount: "-30%", oldPrice: "$279.99", newPrice: "$195.99", price: 195.99, rating: 4, reviews: 14 },
   ],
   featured: [
-    { id: "trend-7", category: "Headphone", title: "B&O Beoplay E8 3.0 Wireless Earbuds - Green", img: "/images/beoplay-earbuds.png", discount: "-25%", oldPrice: "$350.00", newPrice: "$262.50", price: 262.50, rating: 5, reviews: 22 },
+    { id: "trend-7", category: "Headphone", title: "B&O Beoplay E8 3.0 Wireless Earbuds - Green", img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=600&auto=format&fit=crop", discount: "-25%", oldPrice: "$350.00", newPrice: "$262.50", price: 262.50, rating: 5, reviews: 22 },
   ],
   newProducts: [
-    { id: "trend-8", category: "Gaming", title: "DualSense Edge Wireless Controller PS5", img: "/images/ps5-controller.png", discount: "-10%", oldPrice: "$199.99", newPrice: "$179.99", price: 179.99, rating: 5, reviews: 8 },
+    { id: "trend-8", category: "Gaming", title: "DualSense Edge Wireless Controller PS5", img: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=600&auto=format&fit=crop", discount: "-10%", oldPrice: "$199.99", newPrice: "$179.99", price: 179.99, rating: 5, reviews: 8 },
   ],
 };
 
@@ -195,31 +195,84 @@ export default function Storefront() {
     <div className={styles.container}>
       {/* 4. Hero Slider Section */}
       <section id="hero" className={styles.heroSlider}>
-        <div className={styles.heroBackground}>
-          <div className={`${styles.heroGlowCircle} ${styles.heroGlow1}`} />
-          <div className={`${styles.heroGlowCircle} ${styles.heroGlow2}`} />
-        </div>
-        
         <div className={styles.heroContent}>
-          <div className={styles.heroLeft}>
-            <span className={styles.heroSub}>DualSense Wireless Controller</span>
-            <h1 className={styles.heroTitle}>Bring Gaming Worlds To Life</h1>
-            <div className={styles.heroPrice}>
-              <span className={styles.heroPriceLabel}>Starting at</span>
-              <span className={styles.heroPriceValue}>$449.99</span>
+          {/* Circular spinning badge on the left */}
+          <div className={styles.leftBadgeWrapper}>
+            <div className={styles.spinningBadge}>
+              <svg viewBox="0 0 100 100" width="80" height="80">
+                <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                <text fontSize="7.5" fontFamily="Montserrat, sans-serif" fontWeight="bold" fill="#111" letterSpacing="1.2">
+                  <textPath href="#circlePath">
+                    LEARN • ABOUT • US • THROUGH • THIS • VIDEO • 
+                  </textPath>
+                </text>
+              </svg>
+              <div className={styles.spinningBadgeCenter}>
+                <span className={styles.playIcon}>▶</span>
+              </div>
             </div>
-            <button 
-              className={styles.heroCta} 
-              onClick={() => addToCart({
-                id: "hero-controller",
-                title: "PlayStation 5 DualSense Wireless Controller Special Combo Pack",
-                price: 449.99,
-                img: "/images/ps5-controller.png",
-                category: "Gaming"
-              })}
-            >
-              Shop Now • Add to Cart
-            </button>
+          </div>
+
+          <h1 className={styles.heroTitle}>
+            Elevate Your Style <br />
+            <span>With Bold Fashion</span>
+          </h1>
+
+          {/* User reviews badge on the right */}
+          <div className={styles.rightAvatarsBadge}>
+            <div className={styles.overlapAvatars}>
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" alt="User 1" />
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" alt="User 2" />
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop" alt="User 3" />
+              <div className={styles.avatarPlus}>+</div>
+            </div>
+          </div>
+        </div>
+
+        {/* 5-Column Masonry Gallery */}
+        <div className={styles.heroGallery}>
+          {/* Column 1 */}
+          <div className={styles.galleryColumn}>
+            <div className={styles.galleryCard} style={{ backgroundColor: "#f0724b", height: "220px" }} onClick={() => addToCart({ id: "deal-2", title: "AirPods Max Over-Ear Headphones", price: 494.10, img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop", category: "Headphone" })}>
+              <Image src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop" alt="Headphones" fill className={styles.galleryImg} sizes="150px" />
+            </div>
+            <div className={styles.galleryCard} style={{ backgroundColor: "#ffc907", height: "130px" }} onClick={() => addToCart({ id: "deal-1", title: "SmartWatch Creator Series 4", price: 382.50, img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop", category: "Smartwatches" })}>
+              <Image src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop" alt="Smartwatch" fill className={styles.galleryImg} sizes="150px" />
+            </div>
+          </div>
+
+          {/* Column 2 */}
+          <div className={styles.galleryColumn}>
+            <div className={styles.galleryCard} style={{ backgroundColor: "#47ba80", height: "290px" }} onClick={() => addToCart({ id: "deal-6", title: "iPhone 15 Pro Max 256GB", price: 1139.05, img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=600&auto=format&fit=crop", category: "Mobile & Tablets" })}>
+              <Image src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=600&auto=format&fit=crop" alt="iPhone 15" fill className={styles.galleryImg} sizes="150px" />
+            </div>
+          </div>
+
+          {/* Column 3 (Center) */}
+          <div className={styles.galleryColumn} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div className={styles.galleryCard} style={{ backgroundColor: "#ffbe0b", height: "250px", width: "100%" }} onClick={() => addToCart({ id: "trend-8", title: "DualSense Edge Wireless Controller", price: 179.99, img: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=600&auto=format&fit=crop", category: "Gaming" })}>
+              <Image src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=600&auto=format&fit=crop" alt="PS5 Controller" fill className={styles.galleryImg} sizes="150px" />
+            </div>
+            <Link href="/shop" className={styles.exploreCollectionsBtn}>
+              Explore Collections ↗
+            </Link>
+          </div>
+
+          {/* Column 4 */}
+          <div className={styles.galleryColumn}>
+            <div className={styles.galleryCard} style={{ backgroundColor: "#4fa5df", height: "290px" }} onClick={() => addToCart({ id: "deal-4", title: "MacBook Air 13-inch M3", price: 967.12, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=600&auto=format&fit=crop", category: "Computer & Laptop" })}>
+              <Image src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=600&auto=format&fit=crop" alt="MacBook" fill className={styles.galleryImg} sizes="150px" />
+            </div>
+          </div>
+
+          {/* Column 5 */}
+          <div className={styles.galleryColumn}>
+            <div className={styles.galleryCard} style={{ backgroundColor: "#8ad177", height: "220px" }} onClick={() => addToCart({ id: "trend-6", title: "Marshall Acton III Speaker", price: 195.99, img: "https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=600&auto=format&fit=crop", category: "Accessories" })}>
+              <Image src="https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=600&auto=format&fit=crop" alt="Marshall Speaker" fill className={styles.galleryImg} sizes="150px" />
+            </div>
+            <div className={styles.galleryCard} style={{ backgroundColor: "#2d7f57", height: "130px" }} onClick={() => addToCart({ id: "trend-7", title: "Beoplay E8 Wireless Earbuds", price: 262.50, img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=600&auto=format&fit=crop", category: "Headphone" })}>
+              <Image src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=600&auto=format&fit=crop" alt="Earbuds" fill className={styles.galleryImg} sizes="150px" />
+            </div>
           </div>
         </div>
       </section>
@@ -247,7 +300,7 @@ export default function Storefront() {
           </div>
           <div className={styles.promoBannerImgWrapper}>
             <Image 
-              src="/images/iphone-hero.png"
+              src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=600&auto=format&fit=crop"
               alt="Sleek Tablet promo"
               fill
               className={styles.promoBannerImg}
@@ -267,7 +320,7 @@ export default function Storefront() {
                 id: "trend-7",
                 title: "B&O Beoplay E8 3.0 Wireless Earbuds - Green",
                 price: 262.50,
-                img: "/images/beoplay-earbuds.png",
+                img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=600&auto=format&fit=crop",
                 category: "Headphone"
               })}
             >
@@ -276,7 +329,7 @@ export default function Storefront() {
           </div>
           <div className={styles.promoBannerImgWrapper}>
             <Image 
-              src="/images/beoplay-earbuds.png"
+              src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=600&auto=format&fit=crop"
               alt="Beoplay E8 Wireless Earbuds"
               fill
               className={styles.promoBannerImg}
@@ -294,7 +347,7 @@ export default function Storefront() {
           </div>
           <div className={styles.promoBannerImgWrapper}>
             <Image 
-              src="/images/smartwatch.png"
+              src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop"
               alt="Smartwatch promo"
               fill
               className={styles.promoBannerImg}
@@ -408,7 +461,7 @@ export default function Storefront() {
                 id: "trend-6",
                 title: "Marshall Acton III Bluetooth Speaker",
                 price: 195.99,
-                img: "/images/marshall-speaker.png",
+                img: "https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=600&auto=format&fit=crop",
                 category: "Accessories"
               })}
             >
@@ -417,7 +470,7 @@ export default function Storefront() {
           </div>
           <div className={styles.doubleCardImgWrapper}>
             <Image 
-              src="/images/marshall-speaker.png"
+              src="https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=600&auto=format&fit=crop"
               alt="Marshall speaker promotion"
               fill
               className={styles.promoBannerImg}
@@ -441,7 +494,7 @@ export default function Storefront() {
                 id: "accessories-power-bank",
                 title: "Charger Power Bank 10000mAh Quick Charge Type C",
                 price: 79.99,
-                img: "/images/beoplay-earbuds.png",
+                img: "https://images.unsplash.com/photo-1609592424109-dd9892f1b177?q=80&w=600&auto=format&fit=crop",
                 category: "Accessories"
               })}
             >
@@ -465,7 +518,7 @@ export default function Storefront() {
                 id: "gaming-switch-controller",
                 title: "Controller for Switch / OLED Wireless Gamepad",
                 price: 34.99,
-                img: "/images/ps5-controller.png",
+                img: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=600&auto=format&fit=crop",
                 category: "Gaming"
               })}
             >
@@ -554,11 +607,11 @@ export default function Storefront() {
               id: "featured-centerpiece",
               title: `Apple AirPods Max Wireless Headphone (${featuredColor})`,
               price: 129.99,
-              img: "/images/pink-headphones.png",
+              img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop",
               category: "Headphone"
             })}>
               <Image 
-                src="/images/pink-headphones.png" 
+                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop" 
                 alt="Featured Headphones Centerpiece"
                 fill 
                 className={styles.productImg}
@@ -598,7 +651,7 @@ export default function Storefront() {
               id: "featured-centerpiece",
               title: `Apple AirPods Max Wireless Headphone (${featuredColor})`,
               price: 129.99,
-              img: "/images/pink-headphones.png",
+              img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop",
               category: "Headphone"
             })}>
               Apple AirPods Max Premium Headset Special
@@ -614,7 +667,7 @@ export default function Storefront() {
                 id: "featured-centerpiece",
                 title: `Apple AirPods Max Wireless Headphone (${featuredColor})`,
                 price: 129.99,
-                img: "/images/pink-headphones.png",
+                img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop",
                 category: "Headphone"
               })}
             >
@@ -637,7 +690,7 @@ export default function Storefront() {
           </div>
           <div className={styles.bottomPromoImgWrapper}>
             <Image 
-              src="/images/iphone-colors.png"
+              src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=600&auto=format&fit=crop"
               alt="MacBook display representation"
               fill
               className={styles.heroImage}

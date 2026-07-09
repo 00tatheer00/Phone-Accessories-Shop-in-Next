@@ -289,143 +289,246 @@
 
 /* Hero Slider */
 .heroSlider {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)), url('/images/hero-bg.png');
-  background-size: cover;
-  background-position: center;
+  background-color: #ffffff;
+  padding: 80px 0 100px;
   position: relative;
+  width: 100%;
   overflow: hidden;
-  max-width: 100%;
-  margin: 0;
-  border-radius: 0;
-  padding: 80px 5%;
-  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid #f1f5f9;
 }
 
 @media (max-width: 968px) {
   .heroSlider {
-    margin: 0;
-    padding: 60px 5%;
+    padding: 60px 0 80px;
   }
 }
 
-.heroBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.heroGlowCircle {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-  border-radius: 50%;
-}
-
-.heroGlow1 {
-  top: -150px;
-  right: -100px;
-}
-
-.heroGlow2 {
-  bottom: -200px;
-  left: -100px;
-}
-
 .heroContent {
-  max-width: 800px;
+  max-width: 1300px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: space-between;
+  padding: 0 5%;
   position: relative;
   z-index: 2;
-  color: white;
+  color: #111;
 }
 
-.heroLeft {
+.leftBadgeWrapper {
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
 }
 
-.heroSub {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #ffb900;
-  background-color: rgba(255, 185, 0, 0.12);
-  padding: 6px 14px;
-  border-radius: 4px;
-  letter-spacing: 0.1em;
-  margin-bottom: 18px;
-  display: inline-block;
+@media (max-width: 768px) {
+  .leftBadgeWrapper {
+    display: none;
+  }
+}
+
+.spinningBadge {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  animation: spinBadgeText 16s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes spinBadgeText {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinningBadgeCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(calc(-1 * var(--badge-rotation, 0deg)));
+  width: 32px;
+  height: 32px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  cursor: pointer;
+  z-index: 3;
+}
+
+.playIcon {
+  font-size: 8px;
+  color: #111;
+  margin-left: 2px;
 }
 
 .heroTitle {
-  font-size: 3.5rem;
-  line-height: 1.15;
-  font-weight: 800;
-  margin-bottom: 20px;
-  letter-spacing: -0.01em;
-  color: #ffffff;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  font-size: 3.8rem;
+  line-height: 1.1;
+  font-weight: 850;
+  margin: 0;
+  letter-spacing: -0.04em;
+  color: #111111;
+  text-align: center;
+  flex: 2;
+  font-family: var(--font-display);
 }
 
-@media (max-width: 640px) {
+.heroTitle span {
+  color: #666;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
   .heroTitle {
     font-size: 2.3rem;
   }
 }
 
-.heroPrice {
+.rightAvatarsBadge {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .rightAvatarsBadge {
+    display: none;
+  }
+}
+
+.overlapAvatars {
+  display: flex;
+  align-items: center;
+}
+
+.overlapAvatars img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  margin-left: -10px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.overlapAvatars img:first-child {
+  margin-left: 0;
+}
+
+.avatarPlus {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  border: 2px solid #ffffff;
+  margin-left: -10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* 5-Column Gallery */
+.heroGallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  max-width: 1300px;
+  margin: 50px auto 0;
+  padding: 0 5%;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 968px) {
+  .heroGallery {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroGallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+.galleryColumn {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-bottom: 32px;
+  gap: 20px;
+  width: 100%;
 }
 
-.heroPriceLabel {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 600;
+@media (max-width: 640px) {
+  .galleryColumn {
+    gap: 12px;
+  }
 }
 
-.heroPriceValue {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: #ffd800;
-  font-family: var(--font-display);
-  line-height: 1;
-}
-
-.heroCta {
-  background-color: #ffd800;
-  color: #111;
-  border: none;
-  padding: 16px 40px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 0.95rem;
+.galleryCard {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: var(--transition-smooth);
-  box-shadow: 0 4px 15px rgba(255, 216, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.galleryCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.galleryImg {
+  object-fit: contain;
+  width: 65% !important;
+  height: 65% !important;
+  position: relative !important;
+  transition: transform 0.45s ease;
+}
+
+.galleryCard:hover .galleryImg {
+  transform: scale(1.08) rotate(-1.5deg);
+}
+
+.exploreCollectionsBtn {
+  background-color: #111111;
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 35px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 6px;
+  margin: 15px auto 0;
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  width: fit-content;
 }
 
-.heroCta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 216, 0, 0.5);
-  background-color: #ffe033;
+.exploreCollectionsBtn:hover {
+  background-color: #222222;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
 .heroRight {
